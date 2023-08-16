@@ -1,0 +1,31 @@
+// app global css in SCSS form
+@font-face {
+    font-family: iransans;
+    src: url(./fonts/FontsFree-Net-ir_sans.ttf);
+}
+body {
+    font-family: 'iransans';
+}
+.container {
+    padding: 0 100px;
+}
+.fs-sm {
+    font-size: 12px;
+}
+.fs-md {
+    font-size: 16px;
+}
+.fs-lg {
+    font-size: 20px;
+}
+.fs-xl {
+    font-size: 26px;
+}
+.fs {
+    font-size: 1em;
+}
+@media (max-width: $breakpoint-md-min) {
+    .container {
+        padding: 0 0;
+    }
+}
