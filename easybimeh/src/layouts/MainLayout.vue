@@ -1,5 +1,18 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <!-- toggle menu -->
+    <div class="toggle-menu">
+      <div class="button-box column justify-center q-pa-md">
+        <q-btn color="green-7" label="ورود"/>
+        <q-btn color="green-4" class="q-mt-sm" label="ثبت نام"/>
+      </div>
+      <ul>
+        <li v-for="item in tabList" :key="item">
+          <a href="#">{{ item }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="overlay" @click="dontShowMenu"></div>
 
     <q-header elevated class="bg-primary">
       <div class="container">
@@ -19,11 +32,6 @@
         </q-tabs>
       </div>
     </q-header>
-
-    <!--menu-content-->
-    <!-- <div class="menu">
-
-    </div> -->
 
     <q-page-container>
       <router-view />
@@ -93,7 +101,18 @@ export default defineComponent({
       footerList,
       footerConct,
       showMenu() {
-
+        const menuBtn = document.querySelector('.toggle-menu')
+        const overlayEl = document.querySelector('.overlay')
+        menuBtn.style.transform ='translateX(0)'
+        overlayEl.style.visibility = 'visible'
+        overlayEl.style.opacity = '1'
+      },
+      dontShowMenu() {
+        const menuBtn = document.querySelector('.toggle-menu')
+        const overlayEl = document.querySelector('.overlay')
+        menuBtn.style.transform ='translateX(-100%)'
+        overlayEl.style.visibility = 'hidden'
+        overlayEl.style.opacity = '0'
       }
     }
   }
@@ -108,6 +127,50 @@ export default defineComponent({
   .footer-2 .q-img {
     width: 150px;
     height: 150px;
+  }
+  // toggle-menu
+  .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9995;
+    top: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+  }
+  .toggle-menu {
+    width: 100%;
+    max-width: 250px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    z-index: 9999;
+    background: #fff;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    & .button-box {
+      width: 100%;
+      border-top: 1px solid $grey-5;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      width: 100%;
+      li {
+        width: 100%;
+        a {
+          display: block;
+          padding: 8px 12px;
+        }
+      }
+    }
   }
   @media (max-width: $breakpoint-md-min) {
     .q-toolbar > .q-btn {

@@ -5,8 +5,8 @@
             <div class="header text-center">
                 <h3 class="fs-lg q-pl-sm">شرکت های بیمه</h3>
             </div>
-            <div class="box-container row no-wrap justify-center">
-                <q-card v-for="item in insureCompany" :key="item.id" class="q-ma-sm q-pa-sm shadow-4">
+            <div class="box-container row justify-center">
+                <q-card v-for="item in insureCompany" :key="item.title" class="q-ma-sm q-pa-sm shadow-4">
                     <img :src="item.metaMediaLogoFileUrl" />
                 </q-card>
             </div>

@@ -6,7 +6,10 @@
                 <q-img src="../../src/assets/steps-icon.svg" width="48px" height="60px"></q-img>
                 <h3 class="fs-lg q-pl-sm"> فقط با چند کلیک خودت رو بیمه کن!</h3>
             </div>
-            <div class="box-container row justify-center relative-position">
+            <div class="bg-instead q-px-md">
+                <q-img src="../assets/mobile-banner.png"></q-img>
+            </div>
+            <div class="box-container row no-wrap justify-center relative-position">
                 <div class="step-item shadow-15 q-ma-md q-pa-lg column justify-center items-center no-wrap" v-for="item in stepsList" :key="item.id"  :id="item.id" @mouseover="runProgress">
                     <q-img :src="item.src" fit="contain"  :id="item.id"></q-img>
                     <span class="fs-sm text-center q-pt-md" :id="item.id">{{ item.title }}</span>
@@ -24,7 +27,7 @@
                 <q-img src="../../src/assets/insurance-policies.svg" fit="contain" width="48px" height="60px"></q-img>
                 <h3 class="fs-lg q-pl-sm">معرفی بیمه نامه ها</h3>
             </div>
-            <div class="box-container row no-wrap justify-center">
+            <div class="box-container row justify-center">
                 <q-card class="my-card q-ma-md q-pa-md relative-position shadow-3" style="height: 500px;" v-for="item in introList" :key="item.title">
                     <q-img :src="item.imageUrl" :img-style="{ borderRadius: '10px' }"></q-img>
                     <q-card-section class="text-center q-mt-xl">
@@ -110,9 +113,25 @@
     .step {
         z-index: 2;
     }
+    .bg-instead {
+        display: none;
+    }
     @media (max-width: $breakpoint-sm-min) {
         .header h3 {
            font-size: 16px;
+        }
+    }
+    @media (max-width: $breakpoint-sm-max) {
+        .steps-section {
+            & .box-container {
+                display: none;
+            }
+            & .q-linear-progress {
+                display: none;
+            }
+            & .bg-instead {
+                display: block;
+            }
         }
     }
 </style>
