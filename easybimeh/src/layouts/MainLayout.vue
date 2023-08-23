@@ -189,8 +189,8 @@ export default defineComponent({
     }
   }
   @media (max-width: $breakpoint-sm-min) {
-        .footer-1 h6 {
-           font-size: 16px;
-        }
+    .footer-1 h6 {
+      font-size: 16px;
     }
+  }
 </style>

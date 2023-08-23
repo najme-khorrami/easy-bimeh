@@ -2,7 +2,7 @@
   <div class="container">
     <div class="box-container row justify-center relative-position">
       <a class="insurance-item shadow-15 q-ma-sm q-pa-lg column justify-center items-center no-wrap bg-white" v-for="item in insurList" :key="item.id" >
-        <q-img :src="item.iconImage" fit="contain"></q-img>
+        <q-img :src="'https://media.easybimeh.com//Easybimeh/' + item.iconImagePath" fit="contain"></q-img>
         <span class="fs-sm text-center q-pt-md">{{ item.title }}</span>
       </a> 
     </div>
@@ -30,6 +30,7 @@ export default defineComponent({
     .then(function (response) {       
         for(let i=0 ; i<6 ; i++) {
           insurList.push(response.data.message.insuranceType[i])
+          // console.log(response.data.message.insuranceType[i])
         }
       })
       .catch(function (error) {
@@ -37,10 +38,10 @@ export default defineComponent({
       });
 
     const plansList = [
-      {title:'طرح های بیمه درمان خانواده' ,src:'#' ,img:'../../src/assets/family-insure.png'},
-      {title:'طرح های بیمه آتش سوزی منازل مسکونی ' ,src:'#' ,img:'../../src/assets/fire-insure.png'},
-      {title:'طرح های بیمه آسانسور ' ,src:'#' ,img:'../../src/assets/elevator-insure.png'},
-      {title:'طرح های بیمه درمان انفرادی' ,src:'#' ,img:'../../src/assets/person-insure.png'}
+      {title:'طرح های بیمه درمان خانواده' ,src:'#' ,img:'./src/assets/family-insure.png'},
+      {title:'طرح های بیمه آتش سوزی منازل مسکونی ' ,src:'#' ,img:'./src/assets/fire-insure.png'},
+      {title:'طرح های بیمه آسانسور ' ,src:'#' ,img:'./src/assets/elevator-insure.png'},
+      {title:'طرح های بیمه درمان انفرادی' ,src:'#' ,img:'./src/assets/person-insure.png'}
     ]
     return {
       insurList,
@@ -64,6 +65,9 @@ export default defineComponent({
     &:hover {
       transform: translateY(-5px);
     }
+  }
+  a {
+    cursor: pointer;
   }
   .q-separator {
     width: 100%;
